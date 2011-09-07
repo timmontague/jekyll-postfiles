@@ -12,11 +12,12 @@ module Jekyll
     priority :lowest
 
     def generate(site)
-      if site.config['permalink'] != 'pretty'
-        puts "Sorry, postfiles only work with pretty permalinks."
-        puts "Change the setting in _config.yml to use postfiles."
-        return
-      end
+      # other permalinks besides pretty work fine
+      #if site.config['permalink'] != 'pretty'
+        #puts "Sorry, postfiles only work with pretty permalinks."
+        #puts "Change the setting in _config.yml to use postfiles."
+        #return
+      #end
 
       site.posts.each do |post|
         # Go back to the single-file post name
@@ -41,7 +42,7 @@ module Jekyll
     end
 
     def render(context)
-      File.join(context['page']['url'], @text)
+      "./#@text"
     end
   end
 end
